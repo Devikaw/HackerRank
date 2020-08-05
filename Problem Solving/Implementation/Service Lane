@@ -1,0 +1,24 @@
+Function Description
+
+Complete the serviceLane function in the editor below. It should return an array of integers representing the maximum width vehicle that can pass through each segment of the highway described.
+
+serviceLane has the following parameter(s):
+
+n: an integer denoting the size of the cases array
+cases: a two dimensional array of integers where each element is an array of two integers representing starting and ending indices for a segment to consider .
+
+Solution:
+
+static int[] serviceLane(int n, int[] width, int[][] cases) {
+        int[] result = new int[cases.length];
+        for(int q=0; q<cases.length; q++){
+            int min = 100;
+            for(int i=cases[q][0]; i<=cases[q][1]; i++){
+                if(width[i]<min){
+                    min = width[i];
+                }
+            }
+            result[q] = min;
+        }
+        return result;
+    }
