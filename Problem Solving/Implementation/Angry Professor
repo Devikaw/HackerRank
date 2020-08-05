@@ -1,0 +1,23 @@
+Function Description
+
+Complete the angryProfessor function in the editor below. It must return YES if class is cancelled, or NO otherwise.
+
+angryProfessor has the following parameter(s):
+
+k: the threshold number of students
+a: an array of integers representing arrival times
+
+Solution:
+
+static String angryProfessor(int k, int[] a) {
+        int late=0;
+        for(int st:a){
+            if(st>0){
+                late++;
+           }
+        }
+        if(a.length-late<k){
+            return "YES";
+        }
+        return "NO";
+    }
