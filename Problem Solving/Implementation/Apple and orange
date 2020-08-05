@@ -1,0 +1,24 @@
+Solution:
+
+static void countApplesAndOranges(int s, int t, int a, int b, int[] apples, int[] oranges) {
+            int apple_count = 0;
+            int orange_count = 0;
+            for(int i=0; i<apples.length; i++){
+                apples[i] = apples[i] + a;
+            }
+            for(int i=0; i<oranges.length; i++){
+                oranges[i] = oranges[i] + b;
+            }
+            for(int apple:apples){
+                if(apple>=s && apple<=t){
+                    apple_count++;
+                }
+            }
+            System.out.println(apple_count);
+            for(int orange:oranges){
+                if(orange>=s && orange<=t){
+                    orange_count++;
+                }
+            }
+            System.out.println(orange_count);
+    }
