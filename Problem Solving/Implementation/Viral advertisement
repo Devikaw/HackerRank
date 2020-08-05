@@ -1,0 +1,19 @@
+Function Description
+
+Complete the viralAdvertising function in the editor below. It should return the cumulative number of people who have liked the ad at a given time.
+
+viralAdvertising has the following parameter(s):
+
+n: the integer number of days
+
+Solution:
+
+static int viralAdvertising(int n) {
+        int liked = 0;
+        int shared = 5;
+        for(int i=1; i<=n; i++){
+            liked = liked + (shared/2);
+            shared = (shared/2) * 3;
+        }
+        return liked;
+    }
