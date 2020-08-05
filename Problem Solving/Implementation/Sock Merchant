@@ -1,0 +1,25 @@
+Function Description
+
+Complete the sockMerchant function in the editor below. It must return an integer representing the number of matching pairs of socks that are available.
+
+sockMerchant has the following parameter(s):
+
+n: the number of socks in the pile
+ar: the colors of each sock
+
+Solution:
+
+static int sockMerchant(int n, int[] ar) {
+        Map<Integer,Integer> hm = new HashMap<Integer,Integer>();
+        for(int i:ar){
+            Integer j = hm.get(i);
+            hm.put(i,(j==null)?1:j+1);
+        }
+        Iterator hmIterator = hm.entrySet().iterator();
+        int num = 0;
+        while(hmIterator.hasNext()){
+            Map.Entry mapElement = (Map.Entry)hmIterator.next();
+            num += (int)mapElement.getValue()/2;
+        }
+        return num;
+    }
