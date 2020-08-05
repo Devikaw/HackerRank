@@ -1,0 +1,40 @@
+Function Description
+
+Complete the getMoneySpent function in the editor below. It should return the maximum total price for the two items within Monica's budget, or -1 if she cannot afford both items.
+
+getMoneySpent has the following parameter(s):
+
+keyboards: an array of integers representing keyboard prices
+drives: an array of integers representing drive prices
+b: the units of currency in Monica's budget
+
+Solution:
+
+static int getMoneySpent(int[] keyboards, int[] drives, int b) {
+        /*
+         * Write your code here.
+         */
+        Arrays.sort(drives);
+        Integer[] keyboard_list = new Integer[keyboards.length];
+        for(int i=0; i<keyboards.length; i++) {
+            keyboard_list[i] = keyboards[i];
+        }
+        int max=-1;
+        Arrays.sort(keyboard_list,Collections.reverseOrder());
+        for(int i=0, j=0; i<keyboard_list.length; i++) {
+            for(;j<drives.length;j++) {
+                if((keyboard_list[i]+drives[j])>b) {
+                    break;
+                }else {
+                    if((keyboard_list[i]+drives[j])>max) {
+                        max=keyboard_list[i]+drives[j];
+                    }
+                }
+            }
+        }
+        if(max==-1){
+            System.out.println("-1");
+            return -1;
+        }
+        return max;
+    }
