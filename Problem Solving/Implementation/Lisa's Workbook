@@ -1,0 +1,30 @@
+Function Description
+
+Complete the workbook function in the editor below. It should return an integer that represents the number of special problems in the workbook.
+
+workbook has the following parameter(s):
+
+n: an integer that denotes the number of chapters
+k: an integer that denotes the maximum number of problems per page
+arr: an array of integers that denote the number of problems in each chapter
+
+Solution:
+
+static int workbook(int n, int k, int[] arr) {
+        int count = 0;
+        int pageNum = 1;
+        int probNum = 1;
+        int i = 0;
+        while(i<n){
+            if(probNum<=pageNum && pageNum<=(probNum+k-1<arr[i]?probNum+k-1:arr[i])){
+                count++;
+            }
+            probNum = probNum+k;
+            pageNum++;
+            if(probNum>arr[i]){
+                probNum=1;
+                i++;
+            }
+        }
+        return count;
+    }
