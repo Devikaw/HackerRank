@@ -1,0 +1,15 @@
+Function Description
+
+Complete the saveThePrisoner function in the editor below. It should return an integer representing the chair number of the prisoner to warn.
+
+saveThePrisoner has the following parameter(s):
+
+n: an integer, the number of prisoners
+m: an integer, the number of sweets
+s: an integer, the chair number to begin passing out sweets from
+
+Solution:
+
+static int saveThePrisoner(int n, int m, int s) {
+        return (m+s-1-1)%n+1;
+    }
