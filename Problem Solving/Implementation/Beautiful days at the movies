@@ -1,0 +1,29 @@
+Function Description
+
+Complete the beautifulDays function in the editor below. It must return the number of beautiful days in the range.
+
+beautifulDays has the following parameter(s):
+
+i: the starting day number
+j: the ending day number
+k: the divisor
+
+Solution:
+
+static int beautifulDays(int i, int j, int k) {
+        int days = 0;
+        for(int n=i; n<=j; n++){
+            int num = n;
+            int lastDigit = 0;
+            int reverse = 0;
+            while(num>=1){
+                lastDigit = num%10;
+                reverse = reverse * 10 + lastDigit;
+                num = num/10;
+            }
+            int diff = Math.abs(n-reverse);
+            if(diff%k==0)
+                days++;
+        }
+        return days;
+    }
