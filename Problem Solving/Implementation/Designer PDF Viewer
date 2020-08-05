@@ -1,0 +1,19 @@
+Function Description
+
+Complete the designerPdfViewer function in the editor below. It should return an integer representing the size of the highlighted area.
+
+designerPdfViewer has the following parameter(s):
+
+h: an array of integers representing the heights of each letter
+word: a string
+
+Solution:
+
+static int designerPdfViewer(int[] h, String word) {
+        int max = 0;
+        for(int i=0; i<word.length(); i++){
+            int dec = word.charAt(i);
+            max = (h[dec-97]>max)?h[dec-97]:max;
+        }
+        return max*word.length();
+    }
