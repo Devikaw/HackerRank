@@ -1,0 +1,21 @@
+Function Description
+
+Complete the findDigits function in the editor below. It should return an integer representing the number of digits of d that are divisors of d.
+
+findDigits has the following parameter(s):
+
+n: an integer to analyze
+
+Solution:
+
+static int findDigits(int n) {
+        String num = String.valueOf(n);
+        int count=0;
+        for(int i=0; i<num.length(); i++){
+            int digit = Integer.parseInt(Character.toString(num.charAt(i)));
+            if(digit!=0 && n%digit==0){
+                count++;
+            }
+        }
+        return count;
+    }
