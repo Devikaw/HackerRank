@@ -1,0 +1,32 @@
+Complete the checkMagazine function in the editor below. It must print Yes if the note can be formed using the magazine, or No.
+
+checkMagazine has the following parameters:
+
+magazine: an array of strings, each a word in the magazine
+note: an array of strings, each a word in the ransom note
+
+Solution:
+
+static void checkMagazine(String[] magazine, String[] note) {
+        Map<String,Integer> hm = new HashMap<String,Integer>();
+        for(String i:magazine){
+            Integer j = hm.get(i);
+            hm.put(i,(j==null)?1:j+1);
+        }
+        for(String n:note){
+            if(hm.containsKey(n)) {
+                if(hm.get(n)>0) {
+                    hm.replace(n, hm.get(n)-1);
+                    continue;
+                }else {
+                    System.out.println("No");
+                    return;
+                }
+            }else {
+                System.out.println("No");
+                return;
+            }
+        }
+        System.out.println("Yes");
+        return;
+    }
