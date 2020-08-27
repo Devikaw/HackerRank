@@ -1,0 +1,29 @@
+Function Description
+
+Complete the function sherlockAndAnagrams in the editor below. It must return an integer that represents the number of anagrammatic pairs of substrings in s.
+
+sherlockAndAnagrams has the following parameter(s):
+
+s: a string .
+
+Solution:
+
+static int sherlockAndAnagrams(String s) {
+        Map<String,Integer> hm = new HashMap<String,Integer>();
+        for(int i=0; i<=s.length(); i++){
+            for(int j=i+1; j<=s.length(); j++){
+                String temp = s.substring(i,j);
+                char[] stringToCharArray = temp.toCharArray();
+                Arrays.sort(stringToCharArray);
+                temp = new String(stringToCharArray);
+                Integer k = hm.get(temp);
+                hm.put(temp,(k==null)?1:k+1);
+            }
+        }
+        int sum = 0;
+        Collection<Integer> result = hm.values();
+        for(Integer r:result){
+            sum += ((int)(r*(r-1)))/2;
+        }
+        return sum;
+    }
