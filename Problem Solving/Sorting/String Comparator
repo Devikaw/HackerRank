@@ -1,0 +1,16 @@
+Function Description
+
+Declare a Checker class that implements the comparator method as described. It should sort first descending by score, then ascending by name. 
+The code stub reads the input, creates a list of Player objects, uses your method to sort the data, and prints it out properly.
+
+Solution:
+
+class Checker implements Comparator<Player> {
+  	// complete this method
+	public int compare(Player a, Player b) {
+        if(b.score!=a.score){
+            return b.score-a.score;
+        }
+        return a.name.compareTo(b.name);       
+    }
+}
