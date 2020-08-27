@@ -1,0 +1,22 @@
+Function Description
+
+Complete the alternatingCharacters function in the editor below. It must return an integer representing the minimum number of deletions to make the alternating string.
+
+alternatingCharacters has the following parameter(s):
+
+s: a string
+
+Solution:
+
+static int alternatingCharacters(String s) {
+        int count = 0;
+        char curr = s.charAt(0);
+        for(int i=1; i<s.length(); i++){
+            if(s.charAt(i)==curr){
+                count++;
+            }else{
+                curr = s.charAt(i);
+            }
+        }
+        return count;
+    }
