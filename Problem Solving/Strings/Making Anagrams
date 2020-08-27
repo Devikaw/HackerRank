@@ -1,0 +1,34 @@
+Function Description
+
+Complete the makeAnagram function in the editor below. It must return an integer representing the minimum total characters that must be deleted to make the strings anagrams.
+
+makeAnagram has the following parameter(s):
+
+a: a string
+b: a string
+
+Solution:
+
+static int makeAnagram(String a, String b) {
+        Map<Character,Integer> hm = new HashMap<Character,Integer>();
+        for(int i=0; i<a.length(); i++){
+            Integer j = hm.get(a.charAt(i));
+            hm.put(a.charAt(i),(j==null)?1:j+1);
+        }
+        int count=0;
+        for(int i=0; i<b.length(); i++){
+            if(hm.containsKey(b.charAt(i))) {
+            	if(hm.get(b.charAt(i))==1) {
+            		hm.remove(b.charAt(i));
+            	}else{
+            	  hm.put(b.charAt(i), hm.get(b.charAt(i))-1);
+              }
+            }else {
+            	count++;
+            }
+        }
+        for(int num:hm.values()) {
+        	count+=num;
+        }
+        return count;
+    }
