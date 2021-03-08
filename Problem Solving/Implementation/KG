@@ -1,0 +1,47 @@
+
+public class Kangaroo {
+	
+	public static void main(String[] args) {
+		String word = "encourage";
+		String[] synonyms = new String[] {"urge", "insprire", "boost","ourag"};
+		System.out.println(kangarooScore(word,synonyms));
+	}
+
+	static boolean isSubSequence(String str1, String str2, int m, int n) {
+		if (m == 0)
+		return true;
+		if (n == 0)
+		return false;
+		if (str1.charAt(m - 1) == str2.charAt(n - 1))
+		return isSubSequence(str1, str2, m - 1, n - 1);
+		return isSubSequence(str1, str2, m, n - 1);
+		}
+	
+	static boolean myIsSubsequence(String str1, String str2) {
+		int begin = 0;
+		int end = 0;
+		int pos = 0;
+		for(int i=0; i<str1.length(); i++) {
+			if(pos < str2.length() && str1.charAt(i)==str2.charAt(pos)) {
+				if(pos==0) {
+					begin = i;
+				}
+				if(pos==str2.length()-1) {
+					end = i;
+				}
+				pos += 1;
+			}
+		}
+		return (pos == str2.length() && (end-begin)!=str2.length()-1);
+	}
+	
+	public static int kangarooScore(String word, String[] synonyms) {
+		int score = 0;
+		for(String st : synonyms) {
+			if(myIsSubsequence(word,st)) {
+				score++;
+			}
+		}
+		return score;
+	}
+}
