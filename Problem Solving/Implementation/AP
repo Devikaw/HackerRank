@@ -1,0 +1,38 @@
+import java.util.ArrayList;
+import java.util.Dictionary;
+import java.util.List;
+import java.util.PriorityQueue;
+
+public class Solution {
+	public static int getNumber(int[] landingTimes, int[] takeOffTimes, int maxWaitTime, int initialplanes) {
+		PriorityQueue<Integer> pq = new PriorityQueue<Integer>();
+		int maxPlanes = initialplanes;
+		if(landingTimes.length>1) {
+			maxPlanes++;
+		}
+		for(int i = 0; i<landingTimes.length-1; i++) {
+			int latestTakeOff = takeOffTimes[i];
+			if(latestTakeOff%100==0) {
+				latestTakeOff = (latestTakeOff - 100)+60;
+			}
+			pq.add(latestTakeOff);
+			int latestLand = landingTimes[i+1];
+			if(latestLand%100==0) {
+				latestLand = (latestLand - 100)+60;
+			}
+			if(latestLand>pq.peek()||pq.peek()-latestLand<20) {
+				pq.poll();
+			}else {
+				maxPlanes++;
+			}
+		}
+		return maxPlanes;
+	}
+	public static void main(String[] args) {
+		int[] landingTimes = new int[]{900,940,950,1100,1500,1800};
+		int[] takeOffTimes = new int[]{910,1200,1120,1130,1900,2000};
+		int maxWaitTime = 20;
+		int intialplanes = 0;
+		System.out.println(getNumber(landingTimes, takeOffTimes, maxWaitTime, intialplanes));
+	}
+}
