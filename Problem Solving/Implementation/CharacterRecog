@@ -1,0 +1,48 @@
+
+public class CharacterRecognition {
+
+	public static boolean recognition(String S, String T) {
+		StringBuilder s1 = new StringBuilder();
+		StringBuilder s2 = new StringBuilder();
+		for(int i=0; i<S.length(); i++) {
+			if(Character.isDigit(S.charAt(i))) {
+				int x = Character.getNumericValue(S.charAt(i));
+				while(x>0) {
+					s1.append('*');
+					x--;
+				}
+			}else {
+				s1.append(S.charAt(i));
+			}
+		}
+		for(int i=0; i<T.length(); i++) {
+			if(Character.isDigit(T.charAt(i))) {
+				int x = Character.getNumericValue(T.charAt(i));
+				while(x>0) {
+					s2.append('*');
+					x--;
+				}
+			}else {
+				s2.append(T.charAt(i));
+			}
+		}
+		if(s1.length()==s2.length()) {
+			for(int i=0; i<s1.length(); i++) {
+				if(s1.charAt(i)==s2.charAt(i) || s1.charAt(i)=='*' ||  s2.charAt(i)=='*') {
+					continue;
+				}else {
+					return false;
+				}
+			}
+			return true;
+		}
+		return false;
+	}
+	public static void main(String[] args) {
+		// TODO Auto-generated method stub
+		String S = "A3le";
+		String T = "2pl1";
+		System.out.println(recognition(S, T));
+	}
+
+}
